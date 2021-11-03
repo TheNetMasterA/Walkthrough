@@ -11,6 +11,7 @@
 						<Panel>
 							<content>
 								<mvc:XMLView viewName="walkthrough1.view.HelloPanel"/>
+								<mvc:XMLView viewName="walkthrough1.view.InvoiceList"/>
 							</content>
 						</Panel>
 					</content>
