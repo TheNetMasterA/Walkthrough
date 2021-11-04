@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"walkthrough1/test/unit/AllTests"
+		"walkthrough1/test/unit/model/formatter"
 	], function () {
 		QUnit.start();
 	});
