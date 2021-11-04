@@ -36,11 +36,11 @@ sap.ui.define([
 		var fnIsolatedFormatter = formatter.statusText.bind(oControllerStub);
 
 		// Assert
-		assert.strictEqual(fnIsolatedFormatter("A"), "New", "The long text for status A is correct");
+		assert.strictEqual(fnIsolatedFormatter("A"), "Nuevo", "The long text for status A is correct");
 
-		assert.strictEqual(fnIsolatedFormatter("B"), "In Progress", "The long text for status B is correct");
+		assert.strictEqual(fnIsolatedFormatter("B"), "En Progreso", "The long text for status B is correct");
 
-		assert.strictEqual(fnIsolatedFormatter("C"), "Done", "The long text for status C is correct");
+		assert.strictEqual(fnIsolatedFormatter("C"), "Listo", "The long text for status C is correct");
 
 		assert.strictEqual(fnIsolatedFormatter("Foo"), "Foo", "The long text for status Foo is correct");
 	});
