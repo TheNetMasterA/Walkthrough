@@ -1,9 +1,10 @@
+
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History"
-], function (Controller) {
+], function (Controller, History) {
 	"use strict";
-	
+
 	return Controller.extend("walkthrough1.controller.Detail", {
 
 		onInit: function () {
