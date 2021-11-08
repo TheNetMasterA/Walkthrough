@@ -1,39 +1,50 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/model/json/JSONModel",
-	"sap/ui/model/resource/ResourceModel"
- ], function (UIComponent, JSONModel, ResourceModel) {
+	"sap/ui/Device"
+], function (UIComponent, JSONModel, Device) {
 	"use strict";
-	return UIComponent.extend("walkthrough1.Component", {
-	   metadata : {
-		  "interfaces": ["sap.ui.core.IAsyncContentCreation"],
-		  "rootView": {
-			 "viewName": "walkthrough1.view.App",
-			 "type": "XML",
-			 /*"async": true, // implicitly set via the sap.ui.core.IAsyncContentCreation interface*/
-			 "id": "app"
-		  }
-	   },
-	   init : function () {
-		  // call the init function of the parent
-		  UIComponent.prototype.init.apply(this, arguments);
-		  // set data model
-		  var oData = {
-			 recipient : {
-				name : "todo el Mundo"
-			 }
-		  };
-		  var oModel = new JSONModel(oData);
-		  this.setModel(oModel);
- 
-		  // set i18n model
-		  var i18nModel = new ResourceModel({
-			 bundleName: "walkthrough1.i18n.i18n"
-		  });
-		  this.setModel(i18nModel, "i18n");
 
-		  // create the views based on the url/hash
+	return UIComponent.extend("walkthrough1.Component", {
+
+		metadata: {
+			interfaces: ["sap.ui.core.IAsyncContentCreation"],
+			manifest: "json"
+		},
+
+		init: function () {
+			// call the init function of the parent
+			UIComponent.prototype.init.apply(this, arguments);
+
+			// set data model
+			var oData = {
+				recipient: {
+					name: "World"
+				}
+			};
+			var oModel = new JSONModel(oData);
+			this.setModel(oModel);
+
+			// set device model
+			var oDeviceModel = new JSONModel(Device);
+			oDeviceModel.setDefaultBindingMode("OneWay");
+			this.setModel(oDeviceModel, "device");
+
+			// create the views based on the url/hash
 			this.getRouter().initialize();
-	   }
+		},
+
+		getContentDensityClass : function () {
+			if (!this._sContentDensityClass) {
+				if (!Device.support.touch) {
+					this._sContentDensityClass = "sapUiSizeCompact";
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy";
+				}
+			}
+			return this._sContentDensityClass;
+		}
+
 	});
- });
+
+});
