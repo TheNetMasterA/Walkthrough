@@ -20,7 +20,7 @@ sap.ui.define([
 				model: "invoice"
 			});
 		},
-
+//mi mi //
 		onNavBack: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
